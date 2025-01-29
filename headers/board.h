@@ -109,6 +109,7 @@ int getStartY();
 std::vector<std::vector<Square*>> boardVect;
 - Represents the Scrabble board as a 2D vector of `Square` pointers.  
 - Each `Square` holds information about bonus tiles and tile placement.  
+
 2.5.2 Game State Tracking 
 bool isFirstMove;
 - Tracks whether the first move has been made.  
