@@ -9,4 +9,3 @@ This folder contains the C++ source files that implement the functionality of th
 - **`dictionary.cpp`**: Implements the Dictionary class, which contains the list of valid Haitian Creole words. It ensures that only valid words are accepted during gameplay.
 - **`player.cpp`**: Implements the Player class, which manages the player's information such as their name, score, and tiles. It also includes methods for players to take turns and manage their tiles.
 - **`square.cpp`**: Implements the Square class, representing a single square on the board (e.g., premium squares like double letter score, triple word score).
-- **`tile.cpp`**: Implements the Tile class, representing a single tile (letter) in the game with its letter and associated point value.
