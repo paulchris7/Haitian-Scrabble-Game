@@ -1,0 +1,4 @@
+NUMBER: 7
+BOARD: data/standard-board.txt
+TILES: data/haitian-creole-tile-bag.txt
+DICTIONARY: data/haitian-creole-dictionary.txt
