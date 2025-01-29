@@ -15,16 +15,16 @@ Bag::Bag (const string bag_file_name, int random_seed) {
     srand (random_seed); // Seed the random number generator
     ifstream bagFile (bag_file_name.c_str()); // Open the tile bag file
 
-    if (bagFile.is_open()) {
+    if (bagFile is open()) {
         string line;
         while (getline (bagFile, line)) {
             stringstream ss (line);
-            char c;
+            string letter;
             int points;
             int count;
-            ss >> c >> points >> count; // Parse tile properties
+            ss >> letter >> points >> count; // Parse tile properties
             for (int i = 0; i < count; ++i) {
-                Tile *t = new Tile (toupper(c), points); // Create a new tile
+                Tile *t = new Tile (letter, points); // Create a new tile
                 addTile (t); // Add the tile to the bag
             }
         }
@@ -111,17 +111,17 @@ Bag::Bag (const string bag_file_name, int random_seed)
         while (getline (bagFile, line))
         {
             stringstream ss (line);
-            char c;
+            string letter;
             int points;
             int count;
-            ss >> c >> points >> count;
+            ss >> letter >> points >> count;
             for (int i = 0; i < count; ++ i)
             {
-                Tile *t = new Tile (toupper(c), points);
+                Tile *t = new Tile (letter, points);
                 addTile (t);
             }
         }
-        bagFile.close ();
+        bagFile close ();
     }
     else throw invalid_argument ("Cannot open file: " + bag_file_name);
 }
@@ -146,16 +146,16 @@ Steps:
 
 - Parse Tile Data:
   stringstream ss (line);
-  char c;
+  string letter;
   int points;
   int count;
-  ss >> c >> points >> count;
+  ss >> letter >> points >> count;
   Extracts tile properties from the line.
 
 - Create and Add Tiles:
   for (int i = 0; i < count; ++ i)
   {
-      Tile *t = new Tile (toupper(c), points);
+      Tile *t = new Tile (letter, points);
       addTile (t);
   }
   Converts letter to uppercase (toupper(c)).
@@ -238,7 +238,7 @@ Steps:
 - Extract Tiles Until Limit is Reached:
   for (int i = 0; i < number && tilesRemaining() > 0; ++i)
   {
-      tileSet.insert (_tiles.back());
+      tileSet insert (_tiles.back());
       _tiles.pop_back();
   }
   Uses pop_back() to remove tiles from the bag in LIFO order.
