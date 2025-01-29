@@ -34,18 +34,18 @@ void Player::getTiles(set<Tile*> tileSet) {
     }
 }
 
-void Player::useTile(char c) {
+void Player::useTile(string s) {
     for (unsigned int i = 0; i < _playerTiles.size(); i++) {
-        if (c == _playerTiles[i]->getLetter()) {
+        if (s == _playerTiles[i]->getLetter()) {
             _playerTiles.erase(_playerTiles.begin() + i); // Remove the tile from the player's hand
             break;
         }
     }
 }
 
-void Player::exchangeTile(char c, Bag& bag) {
+void Player::exchangeTile(string s, Bag& bag) {
     for (unsigned int i = 0; i < _playerTiles.size(); i++) {
-        if (c == _playerTiles[i]->getLetter()) {
+        if (s == _playerTiles[i]->getLetter()) {
             bag.addTile(_playerTiles[i]); // Return the tile to the bag
             _playerTiles.erase(_playerTiles.begin() + i); // Remove the tile from the player's hand
             break;
@@ -53,11 +53,11 @@ void Player::exchangeTile(char c, Bag& bag) {
     }
 }
 
-bool Player::findTile(char c, int& pos) {
+bool Player::findTile(string s, int& pos) {
     for (int i = 0; i < (int)_playerTiles.size(); i++) {
         if (i == pos)
             continue;
-        if (c == _playerTiles[i]->getLetter()) {
+        if (s == _playerTiles[i]->getLetter()) {
             pos = i; // Update the position of the found tile
             return true;
         }
@@ -65,9 +65,9 @@ bool Player::findTile(char c, int& pos) {
     return false; // Tile not found
 }
 
-void Player::returnTile(char c, vector<Tile*>& usedTiles) {
+void Player::returnTile(string s, vector<Tile*>& usedTiles) {
     for (int i = 0; i < (int)_playerTiles.size(); i++) {
-        if (c == _playerTiles[i]->getLetter()) {
+        if (s == _playerTiles[i]->getLetter()) {
             usedTiles.push_back(_playerTiles[i]); // Add the tile to the used tiles collection
             return;
         }
@@ -100,7 +100,7 @@ int Player::getHandScore() {
 
 void Player::executeExchangeMove(Bag& bag, std::string word) {
     for (int i = 0; i < (int)word.length(); i++) {
-        this->exchangeTile(word[i], bag); // Exchange each specified tile
+        this->exchangeTile(word.substr(i, 1), bag); // Exchange each specified tile
     }
     this->getTiles(bag.drawTiles(word.length())); // Draw new tiles from the bag
 }
@@ -110,9 +110,9 @@ bool Player::executePlaceMove(Bag& bag, Dictionary& dict, Board& board, char dir
     vector<Tile*> usedTiles;
     int score = 0;
     for (unsigned int i = 0; i < word.length(); i++) {
-        returnTile(word[i], usedTiles); // Return the tile to the used tiles collection
+        returnTile(word.substr(i, 1), usedTiles); // Return the tile to the used tiles collection
         if (usedTiles[usedTiles.size() - 1]->isBlank() && i + 1 < word.length()) {
-            usedTiles[usedTiles.size() - 1]->useAs(word[i + 1]); // Assign a letter to the blank tile
+            usedTiles[usedTiles.size() - 1]->useAs(word.substr(i + 1, 1)); // Assign a letter to the blank tile
             i++;
         }
     }
@@ -261,10 +261,10 @@ void Player::getTiles(set<Tile*> tileSet)
 Adds a set of tiles to the player's hand.
 
 Use a Tile
-void Player::useTile(char c)
+void Player::useTile(string s)
 {
     for(unsigned int i = 0; i < _playerTiles.size(); i++){
-        if(c == _playerTiles[i]->getLetter()){
+        if(s == _playerTiles[i]->getLetter()){
             _playerTiles.erase(_playerTiles.begin() + i);
             break;
         }
@@ -273,10 +273,10 @@ void Player::useTile(char c)
 Removes a tile from _playerTiles when used.
 
 Exchange a Tile
-void Player::exchangeTile(char c, Bag& bag)
+void Player::exchangeTile(string s, Bag& bag)
 {
     for(unsigned int i = 0; i < _playerTiles.size(); i++){
-        if(c == _playerTiles[i]->getLetter()){
+        if(s == _playerTiles[i]->getLetter()){
             bag.addTile(_playerTiles[i]);
             _playerTiles.erase(_playerTiles.begin() + i);
             break;
@@ -286,12 +286,12 @@ void Player::exchangeTile(char c, Bag& bag)
 Removes a tile from _playerTiles and returns it to the Bag.
 
 Find a Tile
-bool Player::findTile(char c, int& pos)
+bool Player::findTile(string s, int& pos)
 {
     for(int i = 0; i < (int)_playerTiles.size(); i++){
         if(i == pos)
             continue;
-        if(c == _playerTiles[i]->getLetter()){
+        if(s == _playerTiles[i]->getLetter()){
             pos = i;
             return true;
         }
@@ -301,10 +301,10 @@ bool Player::findTile(char c, int& pos)
 Searches for a tile in the player's hand. If found, updates pos and returns true.
 
 Return a Tile to the Player's Hand
-void Player::returnTile(char c, vector<Tile*>& usedTiles)
+void Player::returnTile(string s, vector<Tile*>& usedTiles)
 {
     for(int i = 0; i < (int)_playerTiles.size(); i++){
-        if (c == _playerTiles[i]->getLetter()){
+        if (s == _playerTiles[i]->getLetter()){
             usedTiles.push_back(_playerTiles[i]);
             return;
         }
@@ -332,7 +332,7 @@ Exchange Move
 void Player::executeExchangeMove(Bag& bag, std::string word)
 {
     for(int i = 0; i < (int)word.length(); i++){
-        this->exchangeTile(word[i], bag);
+        this->exchangeTile(word.substr(i, 1), bag);
     }
     this->getTiles(bag.drawTiles(word.length()));
 }
@@ -345,9 +345,9 @@ bool Player::executePlaceMove(Bag& bag, Dictionary& dict, Board& board, char dir
     vector<Tile*> usedTiles;
     int score = 0;
     for(unsigned int i = 0; i < word.length(); i++){
-        returnTile(word[i], usedTiles);
+        returnTile(word.substr(i, 1), usedTiles);
         if (usedTiles[usedTiles.size()-1]->isBlank() && i+1 < word.length()){
-            usedTiles[usedTiles.size()-1]->useAs(word[i+1]);
+            usedTiles[usedTiles.size()-1]->useAs(word.substr(i+1, 1));
             i++;
         }
     }
@@ -409,8 +409,3 @@ bool Player::executePlaceMove(Bag& bag, Dictionary& dict, Board& board, char dir
     board.setFirstMove(false);
     return true;
 }
-Checks word validity using Dictionary.
-Handles blank tiles by assigning them letters.
-Places tiles on the board if the word is valid.
-Updates the player's score and replaces used tiles from the Bag.
-*/

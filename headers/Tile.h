@@ -1,27 +1,29 @@
 #ifndef TILE_H_
 #define TILE_H_
 
+#include <string>
+
 class Tile {
     public:
-        Tile (char letter, int points)
+        Tile (std::string letter, int points)
         { 
             _letter = letter; 
             _points = points; 
             _use = letter; 
         } // Constructor: Initializes a tile with a letter and point value
 
-        char getLetter () const { return _letter; } // Returns the character on the tile
+        std::string getLetter () const { return _letter; } // Returns the string on the tile
 
         int getPoints () const { return _points; } // Returns the point value of the tile
 
-        bool isBlank () const { return (_letter == '?'); } // Checks if the tile is a blank tile
+        bool isBlank () const { return (_letter == "?"); } // Checks if the tile is a blank tile
 
-        char getUse () const { return _use; } // Returns the letter assigned to a blank tile
-        void useAs (char use) { _use = use; } // Sets the letter a blank tile is being used as
+        std::string getUse () const { return _use; } // Returns the letter assigned to a blank tile
+        void useAs (std::string use) { _use = use; } // Sets the letter a blank tile is being used as
 
     private:
-        char _letter; // The letter printed on the tile
-        char _use; // The letter that a blank tile is used as (for blank tiles only)
+        std::string _letter; // The letter printed on the tile
+        std::string _use; // The letter that a blank tile is used as (for blank tiles only)
         int _points; // The number of points associated with the tile
 };
 
@@ -46,17 +48,17 @@ class Tile {
 - Designed to represent both standard letter tiles and blank tiles.
 
 2.3 Constructor
-Tile (char letter, int points)
+Tile (std::string letter, int points)
 { _letter = letter; _points = points; _use = letter; }
 - Initializes a tile with a letter and point value.
 - Sets _letter and _points to the provided values.
 - Sets _use to _letter, meaning blank tiles default to '?', while normal tiles retain their original letter.
 - Potential Improvement: Use an initialization list for better performance:
-  Tile(char letter, int points) : _letter(letter), _points(points), _use(letter) {}
+  Tile(std::string letter, int points) : _letter(letter), _points(points), _use(letter) {}
 
 2.4 Public Methods
-char getLetter () const;
-- Returns the character on the tile.
+std::string getLetter () const;
+- Returns the string on the tile.
 - Declared const to ensure it does not modify the tile.
 
 int getPoints () const;
@@ -70,22 +72,22 @@ bool isBlank () const;
   static constexpr char BLANK_TILE = '?';
   bool isBlank() const { return _letter == BLANK_TILE; }
 
-char getUse () const;
+std::string getUse () const;
 - Returns the letter assigned to a blank tile.
 - For normal tiles, returns the original letter.
 
-void useAs (char use);
+void useAs (std::string use);
 - Sets the letter a blank tile is being used as.
 - Enables blank tiles to substitute for any letter during gameplay.
 
 2.5 Private Members
-char _letter;
+std::string _letter;
 - The letter printed on the tile.
 - Possible values: A–Z or '?' (blank tile).
 - Potential Improvement: Mark as const to prevent unintended modifications:
-  const char _letter;
+  const std::string _letter;
 
-char _use;
+std::string _use;
 - The letter that a blank tile is used as.
 - Default: If not a blank tile, _use is the same as _letter.
 
