@@ -7,17 +7,17 @@
 #include "../headers/Tile.h"
 
 class Bag {
-public:
-    Bag (const std::string bag_file_name, int random_seed); // Constructor: Initializes the bag with tiles from a file
-    ~Bag (); // Destructor: Cleans up dynamically allocated memory
+    public:
+        Bag (const std::string bag_file_name, int random_seed); // Constructor: Initializes the bag with tiles from a file
+        ~Bag (); // Destructor: Cleans up dynamically allocated memory
 
-    void addTile (Tile *tile); // Adds a single tile to the bag
-    void addTiles (std::vector<Tile*> tiles); // Adds multiple tiles to the bag
-    std::set<Tile*> drawTiles (int number); // Draws a specified number of tiles from the bag
-    int tilesRemaining () const; // Returns the number of tiles remaining in the bag
+        void addTile (Tile *tile); // Adds a single tile to the bag
+        void addTiles (std::vector<Tile*> tiles); // Adds multiple tiles to the bag
+        std::set<Tile*> drawTiles (int number); // Draws a specified number of tiles from the bag
+        int tilesRemaining () const; // Returns the number of tiles remaining in the bag
 
-private:
-    std::vector<Tile*> _tiles; // Stores all tiles in the bag
+    private:
+        std::vector<Tile*> _tiles; // Stores all tiles in the bag
 };
 
 #endif /* BAG_H_ */
