@@ -7,10 +7,11 @@ The **Haitian Scrabble game** is a C++ implementation of the popular word game S
 The game will first be implemented as a console-based version and is designed to be easily extendable to a graphical user interface (GUI) in the future. The game will feature key components such as:
 
 - **Bag**: A collection of tiles with letter distributions specific to Haitian Creole.
+- **Tiles**: Represents a single tile (letter) with its associated point value.
 - **Board**: A 15x15 grid that will hold the tiles placed by players during their turn.
-- **Player**: Users will take turns to place tiles on the board and form valid words in Haitian Creole.
 - **Dictionary**: A list of valid words in Haitian Creole that players can use to form words.
-- **User Interface**: Console-based prompts and outputs to manage player turns, score, and tile management.
+- **Player**: Users will take turns to place tiles on the board and form valid words in Haitian Creole.
+- **Square**: Representing a single square on the board.
 
 ## Features
 
