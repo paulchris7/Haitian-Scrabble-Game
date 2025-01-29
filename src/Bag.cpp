@@ -15,7 +15,7 @@ Bag::Bag (const string bag_file_name, int random_seed) {
     srand (random_seed); // Seed the random number generator
     ifstream bagFile (bag_file_name.c_str()); // Open the tile bag file
 
-    if (bagFile is open()) {
+    if (bagFile.is_open()) { // Fix the syntax error here
         string line;
         while (getline (bagFile, line)) {
             stringstream ss (line);
