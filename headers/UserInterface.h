@@ -120,8 +120,6 @@ std::string _playerName;
 
 std::string line;
 - Purpose: A general-purpose string variable, likely used for handling user input.
-6. End of Header Guard
-#endif /* USERINTERFACE_H_ *
 - Closes the #ifndef directive to prevent multiple inclusions of the file.
 
 Conclusion
