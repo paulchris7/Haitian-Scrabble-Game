@@ -30,7 +30,7 @@ bin/Square.o: headers/Square.h src/Square.cpp bin/.dirstamp
 	$(CXX) $(CPPFLAGS) -c -I headers src/Square.cpp -o bin/Square.o
 
 bin/Dictionary.o: headers/Dictionary.h src/Dictionary.cpp bin/.dirstamp
-	$(CXX) $(CPPFLAGS) -c -I headrs src/Dictionary.cpp -o bin/Dictionary.o
+	$(CXX) $(CPPFLAGS) -c -I headers src/Dictionary.cpp -o bin/Dictionary.o
 
 # Clean up build artifacts
 .PHONY: clean
@@ -40,7 +40,7 @@ clean:
 # Ensure bin directory exists
 bin/.dirstamp:
 	mkdir -p bin
-	touch bin/.dirstamp
+	echo > bin/.dirstamp
 
 # 1. Variable Definitions
 # CXX = g++
@@ -89,7 +89,7 @@ bin/.dirstamp:
 # 6. Target: bin/.dirstamp (Directory Setup)
 # bin/.dirstamp:
 # mkdir -p bin
-# touch bin/.dirstamp
+# echo > bin/.dirstamp
 # Ensures bin directory exists before compiling object files.
 
 # Summary of the Build Process:

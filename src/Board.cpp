@@ -87,7 +87,7 @@ int Board::getStartY() {
 }
 
 string Board::vertWord(Tile* t, int row, int col, int& points) {
-    string word = t->isBlank() ? t->getUse() : t->getLetter(); // Initialize word with tile letter
+    string word = t->isBlank() ? string(1, t->getUse()) : string(1, t->getLetter()); // Initialize word with tile letter
     points += t->getPoints(); // Add tile points
     int up = row - 1;
     int down = row + 1;
@@ -105,7 +105,7 @@ string Board::vertWord(Tile* t, int row, int col, int& points) {
 }
 
 string Board::horizWord(Tile* t, int row, int col, int& points) {
-    string word = t->isBlank() ? t->getUse() : t->getLetter(); // Initialize word with tile letter
+    string word = t->isBlank() ? string(1, t->getUse()) : string(1, t->getLetter()); // Initialize word with tile letter
     points += t->getPoints(); // Add tile points
     int right = col + 1;
     int left = col - 1;
@@ -319,7 +319,7 @@ Key Responsibilities:
 #include "../headers/Board.h"
 #include "../headers/Square.h"
 #include "../headers/Dictionary.h"
-#include "../headers/Tile.h"
+#include "../headers/Tile.h>
 
 using namespace std;
 
