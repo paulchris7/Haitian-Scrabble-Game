@@ -455,3 +455,4 @@ string Board::vertWord(Tile* t, int row, int col, int& points)
 
 - Traverses up to find occupied tiles and prepends them.
 - Traverses
+*/
