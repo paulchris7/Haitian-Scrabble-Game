@@ -17,12 +17,12 @@ class Player {
 
         std::string getName(); // Returns the player's name
         void getTiles(std::set<Tile*> tiles); // Sets the player's tiles
-        void useTile(char c); // Removes a tile from the player's hand by its character identifier
-        void exchangeTile(char c, Bag& bag); // Allows the player to exchange a tile with one from the bag
+        void useTile(std::string s); // Removes a tile from the player's hand by its string identifier
+        void exchangeTile(std::string s, Bag& bag); // Allows the player to exchange a tile with one from the bag
         void addScore(int score); // Adds the specified score to the player's total score
         void subtractScore(int score); // Subtracts the specified score from the player's total score
-        bool findTile(char c, int& pos); // Searches for a tile in the player's hand and returns its position
-        void returnTile(char c, std::vector<Tile*>& usedTiles); // Returns a tile to a collection of used tiles
+        bool findTile(std::string s, int& pos); // Searches for a tile in the player's hand and returns its position
+        void returnTile(std::string s, std::vector<Tile*>& usedTiles); // Returns a tile to a collection of used tiles
         bool executePlaceMove(Bag& bag, Dictionary& dict, Board& board, char dir, int row, int col, std::string word); // Executes a move where the player places a word on the board
         void executeExchangeMove(Bag& bag, std::string word); // Executes an exchange move where the player exchanges one or more tiles for new ones from the bag
         int getScore(); // Returns the player's current score
@@ -82,10 +82,10 @@ std::string getName();
 void getTiles(std::set<Tile*> tiles);
 - Sets the player's tiles.
 
-void useTile(char c);
-- Removes a tile from the player's hand by its character identifier.
+void useTile(std::string s);
+- Removes a tile from the player's hand by its string identifier.
 
-void exchangeTile(char c, Bag& bag);
+void exchangeTile(std::string s, Bag& bag);
 - Allows the player to exchange a tile with one from the bag.
 
 void addScore(int score);
@@ -94,10 +94,10 @@ void addScore(int score);
 void subtractScore(int score);
 - Subtracts the specified score from the player's total score.
 
-bool findTile(char c, int& pos);
+bool findTile(std::string s, int& pos);
 - Searches for a tile in the player's hand and returns its position.
 
-void returnTile(char c, std::vector<Tile*>& usedTiles);
+void returnTile(std::string s, std::vector<Tile*>& usedTiles);
 - Returns a tile to a collection of used tiles.
 
 bool executePlaceMove(Bag& bag, Dictionary& dict, Board& board, char dir, int row, int col, std::string word);
