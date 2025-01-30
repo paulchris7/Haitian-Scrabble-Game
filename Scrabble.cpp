@@ -123,7 +123,7 @@ void gamePlay(Dictionary& dict, Board& board, Bag& bag, int numTiles)
 				}
 			}
 			for(unsigned int i = 0; i < word.length(); i++){
-				if(!UI.players[UI.getTurn()]->findTile(word[i],pos)){
+				if(!UI.players[UI.getTurn()]->findTile(string(1, word[i]),pos)){ // Convert char to string
 					cout << "You do not have this tile. Please try again!";
 					cout << "\n\n";
 					hasTile = false;
@@ -175,7 +175,7 @@ void gamePlay(Dictionary& dict, Board& board, Bag& bag, int numTiles)
 				if(i != 0 && word[i-1] == '?'){
 					continue;
 				}
-				if(!UI.players[UI.getTurn()]->findTile(word[i], pos)){
+				if(!UI.players[UI.getTurn()]->findTile(string(1, word[i]), pos)){ // Convert char to string
 					cout << "You do not have this tile. Please try again!";
 					cout << "\n\n";
 					hasTile = false;
@@ -301,11 +301,6 @@ void readConfigFile (string config_file_name,
     if (!hasDict)
         throw invalid_argument("Dictionary file name not specified in config file");
 }
-
-Functionality
-- Opens a configuration file and reads its contents.
-- Extracts required filenames and the number of tiles in a player's hand.
-- Checks if all required parameters are provided; otherwise, throws an error.
 
 3. Game Initialization (main)
 int main (int nargs, char **args)
