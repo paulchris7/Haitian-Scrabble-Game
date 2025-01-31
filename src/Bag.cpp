@@ -23,6 +23,9 @@ Bag::Bag (const string bag_file_name, int random_seed) {
             int points;
             int count;
             ss >> letter >> points >> count; // Parse tile properties
+            for (char &c : letter) {
+                c = toupper(c); // Convert letter to uppercase
+            }
             for (int i = 0; i < count; ++i) {
                 Tile *t = new Tile (letter, points); // Create a new tile
                 addTile (t); // Add the tile to the bag
